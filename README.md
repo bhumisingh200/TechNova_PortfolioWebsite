@@ -1,15 +1,15 @@
 # TechNova_PortfolioWebsite
-✅ TASK 1: Responsive Landing Page 
+✅ TASK 4: Personal Portfolio Website
 <br>
-• Design a modern landing page using HTML and CSS.
+• Design a personal portfolio website.
 <br>
-• Include sections like Hero, About, Services, and Contact.
+• Include sections: About, Skills, Projects, Contact.
 <br>
-• Ensure responsiveness across all devices. 
+• Apply responsive layout and animations.
 <br>
-• Add hover effects and smooth scrolling. 
+• Use clean and professional styling.
 <br>
-• Bonus: Deploy the website on GitHub Pages.
+• Bonus: Deploy it live.
 
 
 Author:Bhumi Singh
