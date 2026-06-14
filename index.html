@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhumi Singh - Java Full Stack Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">BS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="greeting">
+                <span class="wave">👋</span>
+                <span class="greeting-text">Welcome to my portfolio</span>
+            </div>
+            <h1 class="hero-title">Bhumi Singh</h1>
+            <p class="hero-subtitle">Java Full Stack Developer</p>
+            <p class="hero-desc">Building innovative solutions with React, Node.js, and MongoDB</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/bhumisingh200" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:bhumi_2400526@gniot.net.in" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="avatar-container">
+                <img src="profile.jpg" alt="Bhumi Singh" class="profile-photo">
+                <div class="avatar-badge">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I am a 2nd year B.Tech student at Greater Noida Institute of Technology with a strong interest in technology and continuous learning.</p>
+                    <p>Currently, I am building my skills in programming, problem-solving, and core computer science concepts. I enjoy exploring new technologies and improving myself step by step.</p>
+                    <p>I believe in consistency, growth, and becoming better than yesterday. Open to learning opportunities and collaborations.</p>
+                </div>
+                <div class="about-info">
+                    <div class="info-item">
+                        <span class="info-label">Date of Birth:</span>
+                        <span class="info-value">26/07/2006</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Nationality:</span>
+                        <span class="info-value">Indian</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">bhumi_2400526@gniot.net.in</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone:</span>
+                        <span class="info-value">+91 8879260494</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location:</span>
+                        <span class="info-value">Greater Noida, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>B.Tech in Computer Science Engineering (AI)</h3>
+                        <p class="institution">Greater Noida Institute of Technology (GNIOT)</p>
+                        <p class="period">09/2024 - Present</p>
+                        <p class="cgpa">CGPA: 7.9</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>12th Grade</h3>
+                        <p class="institution">Lady Khatun Marium School, Navi Mumbai</p>
+                        <p class="period">04/2022 - 04/2024</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>10th Grade</h3>
+                        <p class="institution">Radcliffe School, Navi Mumbai</p>
+                        <p class="period">04/2017 - 04/2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Gamified Education Platform</h3>
+                    <p class="project-org">Smart India Hackathon</p>
+                    <p class="project-desc">Created a gamified e-learning system with quizzes, rewards, and progress tracking. Optimized for rural users with low internet connectivity.</p>
+                    <p class="project-tech">
+                        <span class="tech-badge">React.js</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Express.js</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-donate"></i>
+                    </div>
+                    <h3>NGO Transparency & Donation Platform</h3>
+                    <p class="project-org">Webathon - Tech Club GNIOT</p>
+                    <p class="project-desc">Built a transparent platform for NGO operations and donations. Got selected in top 15 among all participants.</p>
+                    <p class="project-tech">
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Firebase</span>
+                        <span class="tech-badge">Chart.js</span>
+                    </p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Tutor For Remote India</h3>
+                    <p class="project-org">SHE INNOVATES - Intercollege Competition</p>
+                    <p class="project-desc">Intelligent PDF Learning Assistant designed to help remote students with personalized learning experiences.</p>
+                    <p class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Streamlit</span>
+                        <span class="tech-badge">REST APIs</span>
+                    </p>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Air Quality Prediction System</h3>
+                    <p class="project-org">Mini Project - GNIOT</p>
+                    <p class="project-desc">Built a machine learning-based system to predict air quality using historical environmental data with high accuracy.</p>
+                    <p class="project-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Machine Learning</span>
+                        <span class="tech-badge">Data Analysis</span>
+                    </p>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Local Job Hiring App</h3>
+                    <p class="project-org">TechClasher Hackathon</p>
+                    <p class="project-desc">Developed a prototype demonstrating the workflow of a local job hiring platform. Collaborated on idea planning, UI flow, and presentation.</p>
+                    <p class="project-tech">
+                        <span class="tech-badge">UI/UX Design</span>
+                        <span class="tech-badge">Prototyping</span>
+                        <span class="tech-badge">Team Collaboration</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Spring Boot</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Databases</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">Firestore</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Tools & Concepts</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">DSA</span>
+                        <span class="skill-tag">Client-Server Architecture</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Quick Learner</span>
+                        <span class="skill-tag">Team Player</span>
+                        <span class="skill-tag">Time Management</span>
+                        <span class="skill-tag">Adaptable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Achievements & Certifications</h2>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Smart India Hackathon</h3>
+                    <p>Selected for Gamified Education Platform</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Webathon - Top 15</h3>
+                    <p>NGO Transparency & Donation Platform</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>TechClasher Hackathon</h3>
+                    <p>Certificate of Participation</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Ms Classy Award</h3>
+                    <p>Best Dressed Female (2025 & 2026)</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>CSDC Certificate</h3>
+                    <p>Corporate Skill Development - Grade A</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>SHE INNOVATES</h3>
+                    <p>Intercollege Project Competition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-content">
+                <p>I'm always interested in hearing about new projects and opportunities.</p>
+                <div class="contact-links">
+                    <a href="mailto:bhumi_2400526@gniot.net.in" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank" class="contact-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/bhumisingh200" target="_blank" class="contact-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Bhumi Singh. All rights reserved.</p>
+            <p>Designed & Built with <i class="fas fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
