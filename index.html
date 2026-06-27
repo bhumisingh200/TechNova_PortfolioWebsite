@@ -2,367 +2,1284 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Makes the website responsive on mobile devices -->
-    <title>Bhumi Singh - Java Full Stack Developer</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bhumi Singh - Java Full Stack Developer & AI Enthusiast Portfolio. Showing projects, skills, certifications, and experience.">
+    <title>Bhumi Singh | Java Full Stack Developer & AI Enthusiast</title>
+    
+    <!-- Google Fonts: Outfit & Space Grotesk for dynamic modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">  <!-- nav-container helps organize the logo, menu, and hamburger icon -->
-            <div class="logo">
-                <span class="logo-icon">BS</span>
-                <span class="logo-text">Bhumi Singh</span>
+<body class="dark-theme">
+    
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Glowing Background Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Custom Cursor Glow -->
+    <div id="cursor-glow"></div>
+
+    <!-- Theme Customizer Drawer -->
+    <div class="theme-customizer" id="theme-customizer">
+        <button class="customizer-toggle" id="customizer-toggle" aria-label="Customize Theme">
+            <i class="fas fa-cog fa-spin"></i>
+        </button>
+        <div class="customizer-content">
+            <h4>Customize Theme</h4>
+            <div class="customizer-section">
+                <p>Accent Color</p>
+                <div class="accent-colors">
+                    <button class="color-btn active" data-hue="270" style="background: hsl(270, 85%, 60%);" title="Purple"></button>
+                    <button class="color-btn" data-hue="220" style="background: hsl(220, 90%, 55%);" title="Blue"></button>
+                    <button class="color-btn" data-hue="145" style="background: hsl(145, 80%, 45%);" title="Green"></button>
+                    <button class="color-btn" data-hue="25" style="background: hsl(25, 95%, 50%);" title="Orange"></button>
+                </div>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#hero" class="nav-link">Home</a></li>  <!-- The # were used to scroll down to the that section accordingly -->
+            <div class="customizer-section">
+                <p>Mode</p>
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="dark-mode-btn"><i class="fas fa-moon"></i> Dark</button>
+                    <button class="mode-btn" id="light-mode-btn"><i class="fas fa-sun"></i> Light</button>
+                </div>
+            </div>
+            <div class="customizer-section">
+                <p>Visitor Stats</p>
+                <div class="visitor-display">
+                    <i class="fas fa-users"></i> <span id="visitor-count">1,248</span> views
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="nav-logo">
+                <span class="logo-icon">BS</span>
+                <span class="logo-text">Bhumi<span class="gradient-text">.Singh</span></span>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Timeline</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#blogs" class="nav-link">Blogs</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger"> <!--Hamberger was used to make the website responsive on mobile devices. It will show up when the screen size is small with the icon ☰ -->
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <div class="nav-actions">
+                <!-- Language Selector -->
+                <div class="language-dropdown">
+                    <button class="lang-btn" id="lang-toggle-btn" aria-label="Toggle Language">
+                        <i class="fas fa-globe"></i> <span id="current-lang-label">EN</span>
+                    </button>
+                    <div class="lang-menu" id="lang-menu">
+                        <button data-lang="en" class="lang-option active">English</button>
+                        <button data-lang="hi" class="lang-option">Hindi (हिंदी)</button>
+                    </div>
+                </div>
+                
+                <!-- Terminal Mode Toggle -->
+                <button class="terminal-toggle-btn" id="terminal-toggle-trigger" title="Open Console Shell (Alt+T)">
+                    <i class="fas fa-terminal"></i>
+                </button>
+
+                <!-- Command Palette Shortcut Button -->
+                <button class="cmd-palette-btn" id="cmd-palette-trigger" title="Command Palette (Ctrl+K)">
+                    <span class="kbd">Ctrl K</span>
+                </button>
+                
+                <!-- Mobile Navigation Toggle -->
+                <div class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">   <!--<a href="#hero">Home</a>  # was used to navigate to the hero section -->
-        <div class="hero-content">     <!--First div used to divide the hero section into 2 in which this is for left section -->
-            <div class="greeting">
-                <span class="wave">👋</span>
-                <span class="greeting-text">Welcome to my portfolio</span>
-            </div>
-            <h1 class="hero-title">Bhumi Singh</h1>
-            <p class="hero-subtitle">Java Full Stack Developer</p>
-            <p class="hero-desc">Building innovative solutions with React, Node.js, and MongoDB</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/bhumisingh200" target="_blank" class="social-icon">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:bhumi_2400526@gniot.net.in" target="_blank" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://leetcode.com/u/bhu_mi26/" target="_blank" class="social-icon">
-                    <i class="fas fa-code"></i>
-                </a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="avatar-container">
-                <img src="profile.jpg" alt="Bhumi Singh" class="profile-photo">
-                <div class="avatar-badge">
-                    <i class="fas fa-code"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Floating Back-to-Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+        <svg class="progress-ring" width="40" height="40">
+            <circle class="progress-ring__circle" stroke="var(--accent)" stroke-width="3" fill="transparent" r="16" cx="20" cy="20"/>
+        </svg>
+    </button>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>I am a 2nd year B.Tech student at Greater Noida Institute of Technology with a strong interest in technology and continuous learning.</p>
-                    <p>Currently, I am building my skills in programming, problem-solving, and core computer science concepts. I enjoy exploring new technologies and improving myself step by step.</p>
-                    <p>I believe in consistency, growth, and becoming better than yesterday. Open to learning opportunities and collaborations.</p>
-                </div>
-                <div class="about-info">
-                    <div class="info-item">
-                        <span class="info-label">Date of Birth:</span>
-                        <span class="info-value">26/07/2006</span>
+    <main class="main-content">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-info scroll-reveal">
+                    <div class="greeting-badge">
+                        <span class="wave">👋</span>
+                        <span data-i18n="hero-greeting">Hi, I'm Bhumi Singh</span>
                     </div>
-                    <div class="info-item">
-                        <span class="info-label">Nationality:</span>
-                        <span class="info-value">Indian</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Email:</span>
-                        <span class="info-value">bhumi_2400526@gniot.net.in</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Phone:</span>
-                        <span class="info-value">+91 8879260494</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Location:</span>
-                        <span class="info-value">Greater Noida, India</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>B.Tech in Computer Science Engineering (AI)</h3>
-                        <p class="institution">Greater Noida Institute of Technology (GNIOT)</p>
-                        <p class="period">09/2024 - Present</p>
-                        <p class="cgpa">CGPA: 7.9</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>12th Grade</h3>
-                        <p class="institution">Lady Khatun Marium School, Navi Mumbai</p>
-                        <p class="period">04/2022 - 04/2024</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h3>10th Grade</h3>
-                        <p class="institution">Radcliffe School, Navi Mumbai</p>
-                        <p class="period">04/2017 - 04/2022</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Gamified Education Platform</h3>
-                    <p class="project-org">Smart India Hackathon</p>
-                    <p class="project-desc">Created a gamified e-learning system with quizzes, rewards, and progress tracking. Optimized for rural users with low internet connectivity.</p>
-                    <p class="project-tech">
-                        <span class="tech-badge">React.js</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">Express.js</span>
-                        <span class="tech-badge">MongoDB</span>
+                    <h1 class="hero-title">
+                        <span data-i18n="hero-title-prefix">Aspiring</span> 
+                        <span class="gradient-text" id="typing-text">Java Full Stack Developer</span>
+                    </h1>
+                    <p class="hero-desc" data-i18n="hero-description">
+                        2nd year B.Tech student in Artificial Intelligence at GNIOT. Building robust backend applications with Java & Spring Boot, combined with highly interactive, modern web frontends.
                     </p>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-donate"></i>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="download-resume-btn">
+                            <i class="fas fa-download"></i> <span data-i18n="btn-download-resume">Download Resume</span>
+                        </button>
+                        <button class="btn btn-glass" id="view-resume-btn">
+                            <i class="fas fa-eye"></i> <span data-i18n="btn-view-resume">View Resume</span>
+                        </button>
+                        <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> <span data-i18n="btn-contact">Contact Me</span></a>
                     </div>
-                    <h3>NGO Transparency & Donation Platform</h3>
-                    <p class="project-org">Webathon - Tech Club GNIOT</p>
-                    <p class="project-desc">Built a transparent platform for NGO operations and donations. Got selected in top 15 among all participants.</p>
-                    <p class="project-tech">
-                        <span class="tech-badge">HTML</span>
-                        <span class="tech-badge">CSS</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Firebase</span>
-                        <span class="tech-badge">Chart.js</span>
-                    </p>
-                </div>
 
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-robot"></i>
+                    <!-- Keyboard navigation hint -->
+                    <div class="kbd-hints">
+                        <span class="kbd-badge"><kbd>R</kbd> Resume</span>
+                        <span class="kbd-badge"><kbd>P</kbd> Projects</span>
+                        <span class="kbd-badge"><kbd>C</kbd> Contact</span>
                     </div>
-                    <h3>AI Tutor For Remote India</h3>
-                    <p class="project-org">SHE INNOVATES - Intercollege Competition</p>
-                    <p class="project-desc">Intelligent PDF Learning Assistant designed to help remote students with personalized learning experiences.</p>
-                    <p class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">Streamlit</span>
-                        <span class="tech-badge">REST APIs</span>
-                    </p>
-                </div>
 
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <h3>Air Quality Prediction System</h3>
-                    <p class="project-org">Mini Project - GNIOT</p>
-                    <p class="project-desc">Built a machine learning-based system to predict air quality using historical environmental data with high accuracy.</p>
-                    <p class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Machine Learning</span>
-                        <span class="tech-badge">Data Analysis</span>
-                    </p>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Local Job Hiring App</h3>
-                    <p class="project-org">TechClasher Hackathon</p>
-                    <p class="project-desc">Developed a prototype demonstrating the workflow of a local job hiring platform. Collaborated on idea planning, UI flow, and presentation.</p>
-                    <p class="project-tech">
-                        <span class="tech-badge">UI/UX Design</span>
-                        <span class="tech-badge">Prototyping</span>
-                        <span class="tech-badge">Team Collaboration</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skills-category">
-                    <h3>Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
+                    <div class="social-icons">
+                        <a href="https://github.com/bhumisingh200" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://leetcode.com/u/bhu_mi26/" target="_blank" class="social-icon" title="LeetCode"><i class="fas fa-code"></i></a>
+                        <a href="mailto:bhumi_2400526@gniot.net.in" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
-                <div class="skills-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3>Backend</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">Spring Boot</span>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3>Databases</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">DBMS</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Firestore</span>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3>Tools & Concepts</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">DSA</span>
-                        <span class="skill-tag">Client-Server Architecture</span>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Quick Learner</span>
-                        <span class="skill-tag">Team Player</span>
-                        <span class="skill-tag">Time Management</span>
-                        <span class="skill-tag">Adaptable</span>
+                <div class="hero-visual scroll-reveal">
+                    <!-- Premium Glass Card containing avatar and interactive elements -->
+                    <div class="glass-card hero-image-card tilt-card">
+                        <div class="avatar-container">
+                            <!-- Fallback illustration inside avatar if image fails -->
+                            <img src="profile.jpg" alt="Bhumi Singh" class="profile-avatar" onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex'">
+                            <div class="avatar-fallback" id="avatar-fallback" style="display: none;">
+                                <i class="fas fa-user-astronaut"></i>
+                            </div>
+                            <div class="avatar-decorations">
+                                <span class="badge badge-java"><i class="fab fa-java"></i> Java</span>
+                                <span class="badge badge-ai"><i class="fas fa-brain"></i> AI</span>
+                                <span class="badge badge-web"><i class="fas fa-laptop-code"></i> Web</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Mini interactive dashboard in hero -->
+                        <div class="hero-stats-subcard">
+                            <div class="subcard-stat">
+                                <span class="stat-num">7.9</span>
+                                <span class="stat-label">CGPA</span>
+                            </div>
+                            <div class="subcard-stat">
+                                <span class="stat-num">5+</span>
+                                <span class="stat-label">Projects</span>
+                            </div>
+                            <div class="subcard-stat">
+                                <span class="stat-num">3+</span>
+                                <span class="stat-label">Internships</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Achievements & Certifications</h2>
+            <!-- Interactive Mock GitHub Graph Section inside Hero -->
+            <div class="container github-graph-container scroll-reveal">
+                <div class="glass-card graph-card">
+                    <div class="graph-header">
+                        <h4><i class="fab fa-github"></i> Interactive Contribution History</h4>
+                        <div class="graph-legend">
+                            <span>Less</span>
+                            <span class="legend-box level-0"></span>
+                            <span class="legend-box level-1"></span>
+                            <span class="legend-box level-2"></span>
+                            <span class="legend-box level-3"></span>
+                            <span class="legend-box level-4"></span>
+                            <span>More</span>
+                        </div>
+                    </div>
+                    <div class="graph-scroll-box">
+                        <div class="github-graph" id="github-graph">
+                            <!-- Injected by script.js -->
+                        </div>
+                    </div>
+                    <p class="graph-footer">Hover over cells to explore activity. Randomly simulated based on Bhumi's active repositories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboard" class="dashboard-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-chart-pie"></i> Bhumi's Metrics & Stats</h2>
+            <div class="dashboard-grid">
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-folder-open"></i></div>
+                    <div class="stat-content">
+                        <h3 class="counter" data-target="5">0</h3>
+                        <p>Total Projects Completed</p>
+                    </div>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-briefcase"></i></div>
+                    <div class="stat-content">
+                        <h3 class="counter" data-target="3">0</h3>
+                        <p>Completed Internships</p>
+                    </div>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-award"></i></div>
+                    <div class="stat-content">
+                        <h3 class="counter" data-target="6">0</h3>
+                        <p>Global Certifications</p>
+                    </div>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-cubes"></i></div>
+                    <div class="stat-content">
+                        <h3 class="counter" data-target="15">0</h3>
+                        <p>Technologies & Tools Mastered</p>
+                    </div>
+                </div>
+                <div class="glass-card stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="stat-content">
+                        <h3 class="counter" data-target="500">0</h3>
+                        <p>Coding Questions Solved</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-split-grid">
+                <!-- What's New -->
+                <div class="glass-card split-card">
+                    <div class="card-header-with-icon">
+                        <i class="fas fa-bell"></i>
+                        <h4>What's New</h4>
+                    </div>
+                    <ul class="whats-new-list">
+                        <li>
+                            <span class="status-badge check"><i class="fas fa-check"></i></span>
+                            <span class="list-text">Built **Technova Internship Portal** landing page & flow</span>
+                        </li>
+                        <li>
+                            <span class="status-badge check"><i class="fas fa-check"></i></span>
+                            <span class="list-text">Completed **Java OOP** comprehensive CLI projects</span>
+                        </li>
+                        <li>
+                            <span class="status-badge learn"><i class="fas fa-spinner fa-spin"></i></span>
+                            <span class="list-text">Started **Spring Boot Microservices** foundations</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Currently Learning -->
+                <div class="glass-card split-card">
+                    <div class="card-header-with-icon">
+                        <i class="fas fa-book-reader"></i>
+                        <h4>Currently Learning</h4>
+                    </div>
+                    <div class="currently-learning-grid">
+                        <div class="learning-item">
+                            <i class="fab fa-java"></i>
+                            <div>
+                                <h5>Java Full Stack</h5>
+                                <div class="mini-progress-bar"><div class="fill" style="width: 80%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="learning-item">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h5>Spring Boot</h5>
+                                <div class="mini-progress-bar"><div class="fill" style="width: 50%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="learning-item">
+                            <i class="fab fa-react"></i>
+                            <div>
+                                <h5>React.js</h5>
+                                <div class="mini-progress-bar"><div class="fill" style="width: 65%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="learning-item">
+                            <i class="fas fa-code-branch"></i>
+                            <div>
+                                <h5>Data Structures & Algorithms</h5>
+                                <div class="mini-progress-bar"><div class="fill" style="width: 70%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-concierge-bell"></i> What I Offer</h2>
+            <div class="services-grid">
+                <div class="glass-card service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Frontend Development</h3>
+                    <p>Creating highly responsive, mobile-first, and semantic user interfaces with HTML5, CSS3, modern Vanilla Javascript, and React frameworks.</p>
+                </div>
+                <div class="glass-card service-card">
+                    <div class="service-icon"><i class="fab fa-java"></i></div>
+                    <h3>Java Development</h3>
+                    <p>Writing solid, robust object-oriented code, designing database adapters with JDBC, and engineering clean command line systems and backend logic.</p>
+                </div>
+                <div class="glass-card service-card">
+                    <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Full Stack Integration</h3>
+                    <p>Connecting web client layouts to database endpoints via Express/Node.js or RESTful APIs, securing transactions and managing state.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME SECTION -->
+        <section id="about" class="about-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-user"></i> About Me</h2>
+            <div class="about-grid-content">
+                <div class="about-bio glass-card">
+                    <h3>My Story</h3>
+                    <p>I am a second-year student pursuing a Bachelor of Technology in Computer Science (Artificial Intelligence) at GNIOT, Greater Noida. My technical journey began with structural OOP concepts in Java, and I have since expanded into modern full stack architectures.</p>
+                    <p>I thrive on turning logic puzzles into functioning software. Whether it's coding interfaces or tuning relational database connections, I focus on performance, writing readable code, and expanding my skill horizons daily.</p>
+                    
+                    <div class="about-interests">
+                        <h4>Interests</h4>
+                        <div class="interest-tags">
+                            <span><i class="fas fa-robot"></i> Artificial Intelligence</span>
+                            <span><i class="fas fa-network-wired"></i> API Architectures</span>
+                            <span><i class="fas fa-gamepad"></i> Gamified Systems</span>
+                            <span><i class="fas fa-users-cog"></i> Tech Events</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-timeline glass-card">
+                    <h3>Academic & Growth Roadmap</h3>
+                    <div class="timeline-v">
+                        <div class="timeline-v-item">
+                            <div class="timeline-v-badge">2024</div>
+                            <div class="timeline-v-desc">
+                                <h5>Started B.Tech (AI)</h5>
+                                <p>Initiated Computer Science foundations, standard data representations, and introductory OOP concepts at GNIOT.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-v-item">
+                            <div class="timeline-v-badge">2025</div>
+                            <div class="timeline-v-desc">
+                                <h5>Java Development</h5>
+                                <p>Deep dive into Java Standard Library, inheritance paradigms, concurrency, SQL schemas, and JDBC connections.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-v-item">
+                            <div class="timeline-v-badge">2026</div>
+                            <div class="timeline-v-desc">
+                                <h5>Full Stack Development</h5>
+                                <p>Expanding skills in web frameworks (Node.js, Express, React), asynchronous Javascript, and database mapping.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-v-item">
+                            <div class="timeline-v-badge">2027</div>
+                            <div class="timeline-v-desc">
+                                <h5>Preparing for SDE Roles</h5>
+                                <p>Polishing data structures, algorithmic design patterns, systems architecture, and preparing for placements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-tools"></i> Skills Explorer</h2>
+            
+            <!-- Tech Stack Explorer instructions -->
+            <div class="skills-helper text-center">
+                <p><i class="fas fa-info-circle"></i> <strong>Interactive Stack Explorer:</strong> Click any technology tag to inspect which projects use it!</p>
+            </div>
+
+            <div class="skills-container-layout">
+                <div class="glass-card skills-categories-pane">
+                    <!-- Languages -->
+                    <div class="skills-group">
+                        <h4>Languages</h4>
+                        <div class="skills-flex" id="explorer-languages">
+                            <span class="skill-interactive-tag" data-tech="Java"><i class="fab fa-java"></i> Java</span>
+                            <span class="skill-interactive-tag" data-tech="JavaScript"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="skill-interactive-tag" data-tech="HTML"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="skill-interactive-tag" data-tech="CSS"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="skill-interactive-tag" data-tech="SQL"><i class="fas fa-database"></i> SQL</span>
+                            <span class="skill-interactive-tag" data-tech="Python"><i class="fab fa-python"></i> Python</span>
+                        </div>
+                    </div>
+
+                    <!-- Frontend -->
+                    <div class="skills-group">
+                        <h4>Frontend</h4>
+                        <div class="skills-flex" id="explorer-frontend">
+                            <span class="skill-interactive-tag" data-tech="React.js"><i class="fab fa-react"></i> React.js</span>
+                            <span class="skill-interactive-tag" data-tech="HTML5"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="skill-interactive-tag" data-tech="CSS3"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="skill-interactive-tag" data-tech="Responsive Design"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+                        </div>
+                    </div>
+
+                    <!-- Backend & API -->
+                    <div class="skills-group">
+                        <h4>Backend</h4>
+                        <div class="skills-flex" id="explorer-backend">
+                            <span class="skill-interactive-tag" data-tech="Node.js"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="skill-interactive-tag" data-tech="JDBC"><i class="fas fa-link"></i> JDBC</span>
+                            <span class="skill-interactive-tag" data-tech="REST APIs"><i class="fas fa-exchange-alt"></i> REST APIs</span>
+                            <span class="skill-interactive-tag" data-tech="Express.js"><i class="fas fa-server"></i> Express.js</span>
+                            <span class="skill-interactive-tag" data-tech="Spring Boot"><i class="fas fa-leaf"></i> Spring Boot</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases -->
+                    <div class="skills-group">
+                        <h4>Databases</h4>
+                        <div class="skills-flex" id="explorer-database">
+                            <span class="skill-interactive-tag" data-tech="MySQL"><i class="fas fa-database"></i> MySQL</span>
+                            <span class="skill-interactive-tag" data-tech="MongoDB"><i class="fas fa-leaf"></i> MongoDB</span>
+                            <span class="skill-interactive-tag" data-tech="Firebase"><i class="fas fa-fire"></i> Firebase</span>
+                        </div>
+                    </div>
+
+                    <!-- Tools & IDEs -->
+                    <div class="skills-group">
+                        <h4>Tools</h4>
+                        <div class="skills-flex" id="explorer-tools">
+                            <span class="skill-interactive-tag" data-tech="Git"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="skill-interactive-tag" data-tech="GitHub"><i class="fab fa-github"></i> GitHub</span>
+                            <span class="skill-interactive-tag" data-tech="VS Code"><i class="fas fa-code"></i> VS Code</span>
+                            <span class="skill-interactive-tag" data-tech="IntelliJ IDEA"><i class="fas fa-laptop-code"></i> IntelliJ IDEA</span>
+                            <span class="skill-interactive-tag" data-tech="Postman"><i class="fas fa-envelope-open-text"></i> Postman</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Progress Bars Pane -->
+                <div class="glass-card skill-progress-pane">
+                    <h4>Skill Competencies</h4>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Java (OOP, Collections, Threads)</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>JavaScript (ES6+, DOM, Async)</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Databases (MySQL, Queries, Schema Design)</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Frontend Design (HTML5, CSS3, Flexbox)</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-info">
+                            <span>Backend (Node.js, RESTful Endpoints)</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="projects-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+            
+            <!-- Search & Filters Container -->
+            <div class="projects-controls glass-card">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="project-search" placeholder="Search projects by name, technologies, categories...">
+                </div>
+                
+                <div class="filter-buttons" id="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="java">Java</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="javascript">JavaScript</button>
+                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+                </div>
+            </div>
+
+            <!-- Interactive Projects Timeline indicator -->
+            <div class="projects-timeline-indicator glass-card">
+                <h5><i class="far fa-clock"></i> Project Creation Sequence</h5>
+                <div class="proj-timeline-steps">
+                    <div class="step" data-proj="p3"><span>2024</span><p>AI Tutor</p></div>
+                    <div class="step" data-proj="p4"><span>2024</span><p>Air Quality</p></div>
+                    <div class="step" data-proj="p2"><span>2025</span><p>NGO transparency</p></div>
+                    <div class="step" data-proj="p5"><span>2025</span><p>Local Hiring</p></div>
+                    <div class="step" data-proj="p1"><span>2026</span><p>Gamified Edu</p></div>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Project Card 1: Gamified Education Platform -->
+                <div class="glass-card project-card tilt-card" data-id="p1" data-tech="React.js,Node.js,Express.js,MongoDB,JavaScript,CSS,HTML" data-category="web,javascript,fullstack">
+                    <div class="project-img-wrapper">
+                        <!-- Custom SVG Graphic for visual thumbnail representation -->
+                        <svg class="project-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="60" fill="var(--glass-bg)" rx="5"/>
+                            <circle cx="50" cy="30" r="12" fill="var(--accent)" opacity="0.3"/>
+                            <text x="50" y="32" font-size="6" font-weight="bold" fill="var(--text)" text-anchor="middle" font-family="Space Grotesk">GAMIFIED EDU</text>
+                            <path d="M30 45 L50 35 L70 45" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                            <rect x="42" y="10" width="16" height="5" rx="1" fill="var(--accent)"/>
+                        </svg>
+                        <div class="project-tags-overlay">
+                            <span>Smart India Hackathon</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3>Gamified Education Platform</h3>
+                        <p class="project-desc-short">Created an offline-ready, gamified e-learning system with quizzes, badges, and bandwidth optimizations for remote students.</p>
+                        <div class="project-tech-badges">
+                            <span>React.js</span>
+                            <span>Node.js</span>
+                            <span>Express.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bhumisingh200" target="_blank" class="btn btn-icon" title="View Code"><i class="fab fa-github"></i></a>
+                            <button class="btn btn-small btn-project-details" data-project-id="p1">Details <i class="fas fa-info-circle"></i></button>
+                            <a href="#" class="btn btn-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: NGO Transparency & Donation -->
+                <div class="glass-card project-card tilt-card" data-id="p2" data-tech="HTML,CSS,JavaScript,Firebase,Chart.js" data-category="web,javascript">
+                    <div class="project-img-wrapper">
+                        <svg class="project-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="60" fill="var(--glass-bg)" rx="5"/>
+                            <circle cx="30" cy="30" r="8" fill="var(--accent)" opacity="0.4"/>
+                            <circle cx="70" cy="30" r="8" fill="var(--accent)" opacity="0.4"/>
+                            <line x1="38" y1="30" x2="62" y2="30" stroke="var(--text)" stroke-width="1" stroke-dasharray="2 2"/>
+                            <text x="50" y="48" font-size="6" fill="var(--text)" text-anchor="middle" font-family="Space Grotesk">NGO TRANSPARENCY</text>
+                            <path d="M45 15 L50 20 L55 15" stroke="var(--accent)" stroke-width="1"/>
+                        </svg>
+                        <div class="project-tags-overlay">
+                            <span>Top 15 - Webathon</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3>NGO Transparency Platform</h3>
+                        <p class="project-desc-short">Built a clear tracking portal demonstrating NGO fund allocations using Chart.js visualizations and real-time Firebase syncing.</p>
+                        <div class="project-tech-badges">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>Firebase</span>
+                            <span>Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bhumisingh200" target="_blank" class="btn btn-icon" title="View Code"><i class="fab fa-github"></i></a>
+                            <button class="btn btn-small btn-project-details" data-project-id="p2">Details <i class="fas fa-info-circle"></i></button>
+                            <a href="#" class="btn btn-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: AI Tutor for Remote India -->
+                <div class="glass-card project-card tilt-card" data-id="p3" data-tech="Python,FastAPI,Streamlit,REST APIs" data-category="ai">
+                    <div class="project-img-wrapper">
+                        <svg class="project-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="60" fill="var(--glass-bg)" rx="5"/>
+                            <rect x="25" y="15" width="50" height="30" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                            <line x1="30" y1="22" x2="70" y2="22" stroke="var(--accent)" stroke-width="1"/>
+                            <line x1="30" y1="28" x2="60" y2="28" stroke="var(--text)" stroke-width="0.8"/>
+                            <line x1="30" y1="34" x2="50" y2="34" stroke="var(--text)" stroke-width="0.8"/>
+                            <circle cx="68" cy="34" r="3" fill="var(--accent)"/>
+                            <text x="50" y="52" font-size="5" fill="var(--text)" text-anchor="middle" font-family="Space Grotesk">SHE INNOVATES ENTRY</text>
+                        </svg>
+                        <div class="project-tags-overlay">
+                            <span>Project Showcase</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3>AI Tutor For Remote India</h3>
+                        <p class="project-desc-short">Intelligent learning assistant capable of processing documents offline, running localized index searches for remote students.</p>
+                        <div class="project-tech-badges">
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>Streamlit</span>
+                            <span>REST APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bhumisingh200" target="_blank" class="btn btn-icon" title="View Code"><i class="fab fa-github"></i></a>
+                            <button class="btn btn-small btn-project-details" data-project-id="p3">Details <i class="fas fa-info-circle"></i></button>
+                            <a href="#" class="btn btn-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Air Quality Prediction -->
+                <div class="glass-card project-card tilt-card" data-id="p4" data-tech="Python,Machine Learning,Data Analysis" data-category="ai">
+                    <div class="project-img-wrapper">
+                        <svg class="project-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="60" fill="var(--glass-bg)" rx="5"/>
+                            <path d="M15 45 Q30 15 50 35 T85 15" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                            <circle cx="50" cy="35" r="2" fill="var(--text)"/>
+                            <circle cx="85" cy="15" r="2" fill="var(--accent)"/>
+                            <text x="50" y="52" font-size="5" fill="var(--text)" text-anchor="middle" font-family="Space Grotesk">AIR QUALITY REGRESSION</text>
+                        </svg>
+                        <div class="project-tags-overlay">
+                            <span>Academic Project</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3>Air Quality Prediction System</h3>
+                        <p class="project-desc-short">A regression analyzer mapping air particulate indices using historical pollution feeds to project predictive local maps.</p>
+                        <div class="project-tech-badges">
+                            <span>Python</span>
+                            <span>ML</span>
+                            <span>Data Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bhumisingh200" target="_blank" class="btn btn-icon" title="View Code"><i class="fab fa-github"></i></a>
+                            <button class="btn btn-small btn-project-details" data-project-id="p4">Details <i class="fas fa-info-circle"></i></button>
+                            <a href="#" class="btn btn-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Local Job Hiring App -->
+                <div class="glass-card project-card tilt-card" data-id="p5" data-tech="UI/UX Design,Prototyping,HTML,CSS,JavaScript,Java" data-category="web,java,fullstack">
+                    <div class="project-img-wrapper">
+                        <svg class="project-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="60" fill="var(--glass-bg)" rx="5"/>
+                            <rect x="40" y="15" width="20" height="20" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.2"/>
+                            <line x1="45" y1="20" x2="55" y2="20" stroke="var(--accent)"/>
+                            <circle cx="50" cy="28" r="3" fill="var(--text)"/>
+                            <text x="50" y="48" font-size="5" fill="var(--text)" text-anchor="middle" font-family="Space Grotesk">HIRE APPLICATION</text>
+                        </svg>
+                        <div class="project-tags-overlay">
+                            <span>TechClasher Prototype</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <h3>Local Job Hiring App</h3>
+                        <p class="project-desc-short">Designed and prototyped a matching engine connecting local skilled labor to dynamic job listings around Greater Noida.</p>
+                        <div class="project-tech-badges">
+                            <span>Java</span>
+                            <span>JavaScript</span>
+                            <span>Prototyping</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/bhumisingh200" target="_blank" class="btn btn-icon" title="View Code"><i class="fab fa-github"></i></a>
+                            <button class="btn btn-small btn-project-details" data-project-id="p5">Details <i class="fas fa-info-circle"></i></button>
+                            <a href="#" class="btn btn-icon" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE ROADMAP & WORK HISTORY -->
+        <section id="experience" class="timeline-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-history"></i> Experience & Education</h2>
+            
+            <div class="dual-timeline-grid">
+                <!-- Experience -->
+                <div class="timeline-container">
+                    <h3 class="timeline-heading"><i class="fas fa-briefcase"></i> Internships</h3>
+                    <div class="timeline-branch">
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2025</div>
+                            <div class="content-box glass-card">
+                                <h4>Technova Internship</h4>
+                                <span class="role-subtitle">Lead Developer Intern</span>
+                                <p>Engineered core user registration pathways, database access modules using JDBC, and UI state routing. Contributed to building portal dashboards and user controls.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2025</div>
+                            <div class="content-box glass-card">
+                                <h4>Java Internship</h4>
+                                <span class="role-subtitle">Backend Systems Intern</span>
+                                <p>Refined object structures in relational databases, optimized MySQL queries, wrote transaction safety layers, and created automated CLI data generators.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2025</div>
+                            <div class="content-box glass-card">
+                                <h4>Web Development Internship</h4>
+                                <span class="role-subtitle">UI Assistant Intern</span>
+                                <p>Learned responsive layout structures, asynchronous script integration, styling systems, and worked on optimizing landing page scripts for fast mobile performance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="timeline-container">
+                    <h3 class="timeline-heading"><i class="fas fa-graduation-cap"></i> Academics</h3>
+                    <div class="timeline-branch">
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2024-Present</div>
+                            <div class="content-box glass-card">
+                                <h4>B.Tech (CS - Artificial Intelligence)</h4>
+                                <span class="role-subtitle">Greater Noida Institute of Technology</span>
+                                <p>Focusing on Data Structures & Algorithms, Database Management Systems, Neural Networks, and corporate skill methodologies. Cumulative CGPA: <strong>7.9</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2022-2024</div>
+                            <div class="content-box glass-card">
+                                <h4>12th Grade (Senior Secondary)</h4>
+                                <span class="role-subtitle">Lady Khatun Marium School, Navi Mumbai</span>
+                                <p>Studied Physics, Chemistry, Mathematics, and Computer Science fields, developing a foundational passion for software logic.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-branch-item">
+                            <div class="badge-year">2017-2022</div>
+                            <div class="content-box glass-card">
+                                <h4>10th Grade (Secondary School)</h4>
+                                <span class="role-subtitle">Radcliffe School, Navi Mumbai</span>
+                                <p>Excelled in science and math curricula, participating in various science exhibitions and logical reasoning tests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS & CODING STATS -->
+        <section id="achievements" class="achievements-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-trophy"></i> Achievements & Profiles</h2>
+            
+            <div class="achievements-grid-split">
+                <!-- Achievements list -->
+                <div class="glass-card achievements-panel">
+                    <h3>Highlights</h3>
+                    <div class="achievement-row">
+                        <div class="ach-badge"><i class="fas fa-award"></i></div>
+                        <div class="ach-text">
+                            <h5>Smart India Hackathon</h5>
+                            <p>Shortlisted entry for our comprehensive Gamified Education system tailored for rural connectivity gaps.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-row">
+                        <div class="ach-badge"><i class="fas fa-medal"></i></div>
+                        <div class="ach-text">
+                            <h5>Webathon (Tech Club GNIOT)</h5>
+                            <p>Awarded in the **Top 15** projects globally for building the NGO Donation transparency tracker.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-row">
+                        <div class="ach-badge"><i class="fas fa-heart"></i></div>
+                        <div class="ach-text">
+                            <h5>Ms Classy Award</h5>
+                            <p>Named the **Best Dressed Female** in GNIOT's student events (2025 and 2026 runs).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coding Profiles Stats -->
+                <div class="glass-card coding-profiles-panel">
+                    <h3>Coding Profiles</h3>
+                    <div class="profile-stats-grid">
+                        <a href="https://github.com/bhumisingh200" target="_blank" class="profile-link-card">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h5>GitHub</h5>
+                                <p>50+ Contributions</p>
+                            </div>
+                        </a>
+                        <a href="https://leetcode.com/u/bhu_mi26/" target="_blank" class="profile-link-card">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h5>LeetCode</h5>
+                                <p>Solved 150+ Problems</p>
+                            </div>
+                        </a>
+                        <a href="#" class="profile-link-card">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h5>HackerRank</h5>
+                                <p>5★ in Java & SQL</p>
+                            </div>
+                        </a>
+                        <a href="#" class="profile-link-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <div>
+                                <h5>CodeChef</h5>
+                                <p>3-Star Rating</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications" class="certifications-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-stamp"></i> Certifications</h2>
+            
             <div class="certifications-grid">
-                <div class="cert-card">
-                    <i class="fas fa-award"></i>
-                    <h3>Smart India Hackathon</h3>
-                    <p>Selected for Gamified Education Platform</p>
+                <div class="glass-card cert-card lightbox-trigger" data-cert="si">
+                    <div class="cert-icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Smart India Hackathon</h4>
+                    <p class="org">Ministry of Education, India</p>
+                    <p class="date">Dec 2024</p>
+                    <a href="https://github.com/bhumisingh200" class="btn-cert-link" target="_blank">Verify Credential <i class="fas fa-external-link-alt"></i></a>
                 </div>
-                <div class="cert-card">
-                    <i class="fas fa-trophy"></i>
-                    <h3>Webathon - Top 15</h3>
-                    <p>NGO Transparency & Donation Platform</p>
+                <div class="glass-card cert-card lightbox-trigger" data-cert="wa">
+                    <div class="cert-icon-wrapper"><i class="fas fa-trophy"></i></div>
+                    <h4>Webathon Finalist</h4>
+                    <p class="org">Tech Club GNIOT</p>
+                    <p class="date">Feb 2025</p>
+                    <a href="https://github.com/bhumisingh200" class="btn-cert-link" target="_blank">Verify Credential <i class="fas fa-external-link-alt"></i></a>
                 </div>
-                <div class="cert-card">
-                    <i class="fas fa-medal"></i>
-                    <h3>TechClasher Hackathon</h3>
-                    <p>Certificate of Participation</p>
+                <div class="glass-card cert-card lightbox-trigger" data-cert="tc">
+                    <div class="cert-icon-wrapper"><i class="fas fa-code"></i></div>
+                    <h4>TechClasher Participation</h4>
+                    <p class="org">GNIOT Computer Society</p>
+                    <p class="date">Oct 2025</p>
+                    <a href="https://github.com/bhumisingh200" class="btn-cert-link" target="_blank">Verify Credential <i class="fas fa-external-link-alt"></i></a>
                 </div>
-                <div class="cert-card">
-                    <i class="fas fa-star"></i>
-                    <h3>Ms Classy Award</h3>
-                    <p>Best Dressed Female (2025 & 2026)</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>CSDC Certificate</h3>
-                    <p>Corporate Skill Development - Grade A</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-heart"></i>
-                    <h3>SHE INNOVATES</h3>
-                    <p>Intercollege Project Competition</p>
+                <div class="glass-card cert-card lightbox-trigger" data-cert="cd">
+                    <div class="cert-icon-wrapper"><i class="fas fa-briefcase"></i></div>
+                    <h4>CSDC Corporate Skills</h4>
+                    <p class="org">Corporate Skill Development Centre</p>
+                    <p class="date">Grade A Certification</p>
+                    <a href="https://github.com/bhumisingh200" class="btn-cert-link" target="_blank">Verify Credential <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <p>I'm always interested in hearing about new projects and opportunities.</p>
-                <div class="contact-links">
-                    <a href="mailto:bhumi_2400526@gniot.net.in" class="contact-btn">
-                        <i class="fas fa-envelope"></i> Email Me
-                    </a>
-                    <a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank" class="contact-btn">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/bhumisingh200" target="_blank" class="contact-btn">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
+        <!-- PHOTO GALLERY -->
+        <section id="gallery" class="gallery-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-images"></i> Event Gallery</h2>
+            <div class="gallery-grid">
+                <!-- SVG-based dynamic mocks simulating hackathon visuals -->
+                <div class="gallery-item-card glass-card">
+                    <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="70" fill="var(--glass-bg)"/>
+                        <circle cx="50" cy="30" r="10" fill="var(--accent)" opacity="0.3"/>
+                        <rect x="25" y="45" width="50" height="15" rx="2" fill="var(--accent)" opacity="0.5"/>
+                        <text x="50" y="54" font-size="5" font-weight="bold" fill="var(--text)" text-anchor="middle">HACKATHON DEPLOYMENT</text>
+                    </svg>
+                    <div class="gallery-info">
+                        <h5>Smart India Hackathon</h5>
+                        <p>Working on the offline synchronizer module.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item-card glass-card">
+                    <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="70" fill="var(--glass-bg)"/>
+                        <path d="M20 50 L50 20 L80 50 Z" fill="var(--accent)" opacity="0.4"/>
+                        <circle cx="50" cy="20" r="5" fill="var(--accent)"/>
+                        <text x="50" y="55" font-size="5" font-weight="bold" fill="var(--text)" text-anchor="middle">WEBATHON RUNNERS</text>
+                    </svg>
+                    <div class="gallery-info">
+                        <h5>Webathon Award Presentation</h5>
+                        <p>Receiving top 15 validation among 200+ students.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item-card glass-card">
+                    <svg viewBox="0 0 100 70" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="70" fill="var(--glass-bg)"/>
+                        <rect x="10" y="10" width="80" height="50" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+                        <circle cx="30" cy="35" r="8" fill="var(--text)" opacity="0.2"/>
+                        <circle cx="70" cy="35" r="8" fill="var(--accent)" opacity="0.3"/>
+                        <text x="50" y="45" font-size="5" font-weight="bold" fill="var(--text)" text-anchor="middle">TECH CLUB SUMMIT</text>
+                    </svg>
+                    <div class="gallery-info">
+                        <h5>Corporate Workshop</h5>
+                        <p>Discussing clean database abstractions and SQL tuning.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Bhumi Singh. All rights reserved.</p>
-            <p>Designed & Built with <i class="fas fa-heart"></i></p>
+        <!-- TESTIMONIALS SECTION -->
+        <section id="testimonials" class="testimonials-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-comments"></i> Mentor & Classmate Testimonials</h2>
+            <div class="testimonials-slider-wrapper">
+                <div class="testimonials-track" id="testimonials-track">
+                    <div class="glass-card testimonial-card active">
+                        <p class="quote">"Bhumi showed exceptional debugging capabilities during the SIH project structure phase. She organized the database schema efficiently and helped wrap the code into neat modules under pressure."</p>
+                        <div class="author-details">
+                            <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div>
+                                <h5>Prof. K. Sharma</h5>
+                                <span>Hackathon Project Mentor, GNIOT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-card testimonial-card">
+                        <p class="quote">"Collaborating with Bhumi on the Job Hiring layout was seamless. She translates Figma diagrams to structured code easily and has a thorough grasp of CSS variables and flex coordinates."</p>
+                        <div class="author-details">
+                            <div class="author-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div>
+                                <h5>Amit Verma</h5>
+                                <span>Classmate & TechClasher Partner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button id="prev-testi" class="ctrl-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-testi" class="ctrl-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOGS SECTION -->
+        <section id="blogs" class="blogs-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-book"></i> Technical Blogs</h2>
+            <div class="blogs-grid">
+                <div class="glass-card blog-card" data-blog-id="b1">
+                    <span class="blog-category">Java</span>
+                    <h3>Understanding Java OOP Paradigms</h3>
+                    <p class="blog-excerpt">Deep-dive into inheritance, poly-routing, dynamic binding, and encapsulation structures with code templates...</p>
+                    <button class="btn btn-text read-blog-trigger" data-id="b1">Read Full Article <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="glass-card blog-card" data-blog-id="b2">
+                    <span class="blog-category">Database</span>
+                    <h3>Relational MySQL Basics</h3>
+                    <p class="blog-excerpt">Master foreign keys, joining clauses, query execution strategies, and JDBC driver synchronization mechanisms...</p>
+                    <button class="btn btn-text read-blog-trigger" data-id="b2">Read Full Article <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="glass-card blog-card" data-blog-id="b3">
+                    <span class="blog-category">Frontend</span>
+                    <h3>Efficient DOM Manipulation</h3>
+                    <p class="blog-excerpt">Exploring custom event loops, layout reflow, visual render pipelines, and writing responsive animations...</p>
+                    <button class="btn btn-text read-blog-trigger" data-id="b3">Read Full Article <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div class="glass-card blog-card" data-blog-id="b4">
+                    <span class="blog-category">Tools</span>
+                    <h3>Git Commands Cheat Sheet</h3>
+                    <p class="blog-excerpt">A developer's guide to git branch merging, tracking upstream remotes, rebasing pathways, and solving conflicts...</p>
+                    <button class="btn btn-text read-blog-trigger" data-id="b4">Read Full Article <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section container scroll-reveal">
+            <h2 class="section-title text-center"><i class="fas fa-envelope-open"></i> Let's Connect</h2>
+            <div class="contact-wrapper">
+                <div class="glass-card contact-form-card">
+                    <form id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="form-name">Name</label>
+                            <input type="text" id="form-name" placeholder="John Doe" required>
+                            <span class="error-msg" id="name-error">Name must be at least 2 characters long</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email</label>
+                            <input type="email" id="form-email" placeholder="john@example.com" required>
+                            <span class="error-msg" id="email-error">Enter a valid email address</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" placeholder="Project Inquiry" required>
+                            <span class="error-msg" id="subject-error">Subject cannot be empty</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <span class="error-msg" id="message-error">Message must be at least 10 characters long</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span id="btn-submit-text">Send Message</span> <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info-map-pane">
+                    <div class="glass-card contact-details-subcard">
+                        <div class="info-block">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Location</h5>
+                                <p>Greater Noida, Uttar Pradesh, India</p>
+                            </div>
+                        </div>
+                        <div class="info-block">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email Address</h5>
+                                <p>bhumi_2400526@gniot.net.in</p>
+                            </div>
+                        </div>
+                        <div class="info-block">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h5>LinkedIn Profile</h5>
+                                <p><a href="https://linkedin.com/in/bhumi-singh-97818830b" target="_blank">Connect on LinkedIn</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Mock Interactive Location Map (SVG based for dark aesthetic support) -->
+                    <div class="glass-card mock-map-card">
+                        <h5>📍 Greater Noida Region</h5>
+                        <div class="map-svg-wrapper">
+                            <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="200" height="120" fill="var(--glass-bg)" rx="5"/>
+                                <!-- Grid Lines representing streets -->
+                                <line x1="20" y1="0" x2="20" y2="120" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="70" y1="0" x2="70" y2="120" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="120" y1="0" x2="120" y2="120" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="170" y1="0" x2="170" y2="120" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="0" y1="30" x2="200" y2="30" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="0" y1="70" x2="200" y2="70" stroke="var(--text)" opacity="0.08"/>
+                                <line x1="0" y1="100" x2="200" y2="100" stroke="var(--text)" opacity="0.08"/>
+                                
+                                <!-- Greater Noida Expressway representation -->
+                                <path d="M-10 10 L100 60 L210 110" stroke="var(--accent)" stroke-width="3" opacity="0.25" fill="none"/>
+                                <path d="M-10 10 L100 60 L210 110" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+                                
+                                <!-- GNIOT Marker -->
+                                <circle cx="100" cy="60" r="10" fill="var(--accent)" opacity="0.15" class="pulsate-map"/>
+                                <circle cx="100" cy="60" r="4" fill="var(--accent)"/>
+                                <text x="100" y="47" font-size="5" font-weight="bold" fill="var(--text)" text-anchor="middle" font-family="Outfit">GNIOT CAMPUS</text>
+                                
+                                <!-- Knowledge Park representation -->
+                                <rect x="80" y="70" width="40" height="20" rx="1" fill="var(--accent)" opacity="0.1"/>
+                                <text x="100" y="82" font-size="4" fill="var(--text)" text-anchor="middle" opacity="0.6">Knowledge Park II</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Bhumi Singh. Open Source Portfolio. All rights reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #ff4a5a;"></i> and Glassmorphism.</p>
         </div>
     </footer>
 
+    <!-- COMMAND PALETTE MODAL -->
+    <div class="modal-overlay" id="command-palette-overlay">
+        <div class="cmd-palette-dialog">
+            <div class="cmd-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmd-search-input" placeholder="Type a command or jump destination..." autocomplete="off">
+                <span class="cmd-esc-hint"><kbd>ESC</kbd></span>
+            </div>
+            <div class="cmd-results" id="cmd-results-list">
+                <!-- Jump Targets -->
+                <div class="cmd-group">Jump to section</div>
+                <button class="cmd-item" data-action="nav" data-target="#hero"><i class="fas fa-home"></i> Home <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#about"><i class="fas fa-user"></i> About Me <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#skills"><i class="fas fa-tools"></i> Skills Stack <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#projects"><i class="fas fa-project-diagram"></i> Featured Projects <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#experience"><i class="fas fa-history"></i> Timeline <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#certifications"><i class="fas fa-stamp"></i> Certifications <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#blogs"><i class="fas fa-book"></i> Read Blogs <span class="badge">Go</span></button>
+                <button class="cmd-item" data-action="nav" data-target="#contact"><i class="fas fa-envelope"></i> Contact <span class="badge">Go</span></button>
+                
+                <!-- Quick Tasks -->
+                <div class="cmd-group">Actions</div>
+                <button class="cmd-item" data-action="theme-accent" data-val="270"><i class="fas fa-palette" style="color: hsl(270, 85%, 60%);"></i> Set Accent: Purple</button>
+                <button class="cmd-item" data-action="theme-accent" data-val="220"><i class="fas fa-palette" style="color: hsl(220, 90%, 55%);"></i> Set Accent: Blue</button>
+                <button class="cmd-item" data-action="theme-accent" data-val="145"><i class="fas fa-palette" style="color: hsl(145, 80%, 45%);"></i> Set Accent: Green</button>
+                <button class="cmd-item" data-action="theme-accent" data-val="25"><i class="fas fa-palette" style="color: hsl(25, 95%, 50%);"></i> Set Accent: Orange</button>
+                <button class="cmd-item" data-action="terminal"><i class="fas fa-terminal"></i> Launch Command Shell</button>
+                <button class="cmd-item" data-action="resume"><i class="fas fa-file-pdf"></i> Download CV Resume</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TERMINAL MODE DRAWER (DEV SHELL) -->
+    <div class="terminal-drawer" id="terminal-drawer">
+        <div class="terminal-header">
+            <div class="window-buttons">
+                <span class="win-btn close" id="terminal-close-btn"></span>
+                <span class="win-btn minimize" id="terminal-minimize-btn"></span>
+                <span class="win-btn maximize"></span>
+            </div>
+            <span class="terminal-title"><i class="fas fa-terminal"></i> dev@bhumisingh:~</span>
+            <div class="header-shortcuts">
+                <span>Type 'help' for shell commands</span>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line text-info">Bhumi Singh developer console version 1.0.4 (Interactive Shell)</div>
+            <div class="terminal-line">Type 'help' to review cataloged pathways. Try 'konami' or 'projects'.</div>
+            <div class="terminal-output-container" id="terminal-output">
+                <!-- Log streams appended here -->
+            </div>
+            <div class="terminal-input-row">
+                <span class="terminal-prompt">guest@bhumi:~$&nbsp;</span>
+                <input type="text" id="terminal-shell-input" autocomplete="off" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT DETAILS MODAL -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-dialog">
+            <button class="modal-close" id="project-modal-close" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <span class="modal-category" id="modal-project-org">Hackathon Details</span>
+                <h3 id="modal-project-title">Gamified Education Platform</h3>
+                <div class="project-tech-badges" id="modal-project-tech">
+                    <!-- Badges injected -->
+                </div>
+            </div>
+            <div class="modal-body-scroll">
+                <div class="modal-body">
+                    <div class="modal-col-left">
+                        <h4>System Architecture & Overview</h4>
+                        <p id="modal-project-desc">A deep explanation of the gamified e-learning app, bandwidth optimization, local database synch patterns.</p>
+                        
+                        <h4>Key Features</h4>
+                        <ul class="modal-features-list" id="modal-project-features">
+                            <!-- Injected -->
+                        </ul>
+                    </div>
+                    <div class="modal-col-right">
+                        <div class="glass-card challenge-box">
+                            <h5><i class="fas fa-exclamation-triangle"></i> Technical Challenge</h5>
+                            <p id="modal-project-challenge">Synchronizing data in low network speeds.</p>
+                        </div>
+                        <div class="glass-card learning-box">
+                            <h5><i class="fas fa-lightbulb"></i> Lessons Learned</h5>
+                            <p id="modal-project-lessons">Leveraging IndexDB cache configurations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="https://github.com/bhumisingh200" id="modal-project-github" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> View Repository</a>
+                <a href="#" id="modal-project-live" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG DETAILS MODAL -->
+    <div class="modal-overlay" id="blog-modal">
+        <div class="modal-dialog">
+            <button class="modal-close" id="blog-modal-close" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <span class="modal-category" id="modal-blog-category">Java</span>
+                <h3 id="modal-blog-title">Understanding Java OOP Paradigms</h3>
+                <p class="modal-blog-meta">Written by Bhumi Singh • June 2026</p>
+            </div>
+            <div class="modal-body-scroll">
+                <div class="modal-body blog-content-body" id="modal-blog-body">
+                    <!-- Markdown/HTML injected -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="blog-modal-close-btn">Close Article</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESUME MOCK VIEW MODAL -->
+    <div class="modal-overlay" id="resume-modal">
+        <div class="modal-dialog resume-dialog">
+            <button class="modal-close" id="resume-modal-close" aria-label="Close Modal">&times;</button>
+            <div class="modal-header">
+                <h3>Curriculum Vitae Preview</h3>
+            </div>
+            <div class="modal-body-scroll">
+                <div class="resume-preview-container">
+                    <!-- Clean Mock CV layout representation in HTML/CSS -->
+                    <div class="mock-resume-sheet">
+                        <div class="resume-heading-block">
+                            <h2>Bhumi Singh</h2>
+                            <p>Aspiring SDE | Java Full Stack | AI Enthusiast</p>
+                            <p>Greater Noida • bhumi_2400526@gniot.net.in • +91 8879260494</p>
+                        </div>
+                        <div class="resume-divider"></div>
+                        <div class="resume-section-item">
+                            <h4>Education</h4>
+                            <p><strong>B.Tech in Computer Science (AI)</strong> • CGPA: 7.9 • Greater Noida Inst. of Tech (GNIOT) (2024-Present)</p>
+                            <p><strong>Senior Secondary</strong> • Lady Khatun Marium School (2022-2024)</p>
+                        </div>
+                        <div class="resume-section-item">
+                            <h4>Experience</h4>
+                            <p><strong>Lead Intern</strong> • Technova (2025)</p>
+                            <p><strong>Backend Intern</strong> • Java Developer Internship (2025)</p>
+                        </div>
+                        <div class="resume-section-item">
+                            <h4>Key Skills</h4>
+                            <p>Java, Spring Boot, JavaScript, Node.js, Express, React, SQL, MongoDB, Git</p>
+                        </div>
+                        <div class="resume-section-item">
+                            <h4>Key Projects</h4>
+                            <p>Gamified E-learning platform (Smart India Hackathon entry), NGO transparency portal (Webathon Winner Top 15), AI tutor API engine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="resume-modal-close-btn">Close Preview</button>
+                <button class="btn btn-primary" id="resume-modal-download-btn"><i class="fas fa-download"></i> Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT SUCCESS NOTIFICATION -->
+    <div class="contact-notification" id="contact-notification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <div>
+                <h4>Message Transmitted!</h4>
+                <p>Thank you. Bhumi will connect back with you soon.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EASTER EGG MATRIX SHIELD OVERLAY -->
+    <div class="matrix-rain-overlay" id="matrix-overlay">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="matrix-content">
+            <h2>DEVELOPER MODE ENGAGED</h2>
+            <p>Welcome to Bhumi's Shell Core. Access systems unlocked.</p>
+            <button class="btn btn-primary" id="matrix-exit-btn">Exit Developer Mode</button>
+        </div>
+    </div>
+
+    <!-- JS script -->
     <script src="script.js"></script>
 </body>
 </html>
