@@ -18,7 +18,7 @@
 
 # 🌐 Live Demo
 
-> 🔗 **Portfolio:** bhummi-portfolio.netlify.app
+> 🔗 **Portfolio:** https://bhummi-portfolio.netlify.app/
 
 ---
 
