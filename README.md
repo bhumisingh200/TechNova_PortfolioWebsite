@@ -1,97 +1,295 @@
-# Bhumi Singh - Interactive Premium Developer Portfolio
+# 🚀 Bhumi Singh | Premium Interactive Developer Portfolio
 
-Welcome to the source repository of Bhumi Singh's personal developer portfolio website. This is a state-of-the-art, glassmorphic single-page application built using pure, high-performance **Vanilla HTML5, CSS3, and JavaScript**. It features modern UI design systems, dynamic styling controllers, terminal CLI modes, command palettes, full Hindi/English translation capabilities, and interactive widgets.
+<div align="center">
 
----
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-## 🌟 Premium Features
+### ✨ A modern, fully interactive, glassmorphic developer portfolio built using Vanilla HTML, CSS & JavaScript.
 
-### 1. Modern Glassmorphic UI & Styling
-* **HSL Color Token Engine**: The portfolio CSS leverages HSL variables to alter accent colors dynamically via JavaScript.
-* **Accent Customizer Widget**: A sliding control panel enabling visitors to choose from four accents (**Purple, Blue, Green, Orange**) and toggle between **Dark Mode** and **Light Mode** (states persist in `localStorage`).
-* **Active Scroll Ring**: The Back-to-Top floating button includes an SVG progressive ring indicating scroll percentage.
-* **Canvas Particle Mesh**: A background canvas renders floating stars that connect via neural cords on proximity.
-* **Cursor Glow Tracker**: Highlights mouse cursor coordinates with glowing radial neon gradients.
+**Designed to provide a premium desktop-class experience with advanced animations, developer tools, customizable themes, multilingual support, and interactive widgets.**
 
-### 2. Interactive Data Widgets & Dashboards
-* **Interactive GitHub Contribution Graph**: Renders a 52-week contribution chart with color-intensity cells and dates.
-* **Stats Counter Dashboard**: Numeric metrics (completed projects, solved DSA questions, internships) count up dynamically on scroll.
-* **Tech Stack Explorer**: Clicking a skill tag (e.g. *Java*, *React.js*, *MongoDB*) highlights matching project cards.
-* **Interactive Projects Timeline**: Visual timeline matching project sequences; clicking steps filters and zooms cards.
-* **Project Details Modals**: Opens detail overlays containing technical system architectures, challenges, and lessons learned.
-* **Resume HTML Previewer**: Custom layout previewing Bhumi's CV, complete with simulated PDF download triggers.
-
-### 3. Developer Shell Console (CLI Terminal)
-* Press `Alt + T` or click the shell icon in the navbar to pull up a developer terminal prompt.
-* **Supported Prompt commands**:
-  - `help` - Lists all available console commands.
-  - `about` - Prints educational details and CGPA info.
-  - `skills` - Outputs core language and database stack indices.
-  - `projects` - Summarizes featured hackathon and academic software projects.
-  - `contact` - Outputs active emails and social media handles.
-  - `theme [color]` - Changes accent themes (e.g. `theme blue`, `theme orange`).
-  - `konami` - Manual shortcut to trigger the Matrix rain overlay.
-  - `sudo rm -rf` - Triggers a simulated unauthorized guest access warning.
-  - `clear` - Wipes output lines.
-  - `exit` - Closes the console panel.
-
-### 4. VS-Code-Style Command Palette
-* Press `Ctrl + K` or click the shortcut keycap button to open the Command Palette.
-* Supports fuzzy search matching to trigger navigation jumps, apply accent colors, download resumes, or open console windows.
-
-### 5. Multi-Language Localization (English / Hindi)
-* Clicking the language toggle translates all elements on the page including navbar headings, statistics labels, services descriptions, timelines, contact forms, and even the **typing animation words**!
-
-### 6. Easter Egg (Matrix Rain Canvas)
-* Entering the classic **Konami Code** (`↑ ↑ ↓ ↓ ← → ← → B A`) or executing `konami` in the terminal prompt engages Developer Mode, launching a full-screen Matrix digital rain loop.
+</div>
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+# 🌐 Live Demo
+
+> 🔗 **Portfolio:** bhummi-portfolio.netlify.app
+
+---
+
+# 📸 Screenshots
+
+## 🏠 Home Page
+
+![Home](screenshots/home.png)
+
+---
+
+## 💻 Developer Console (CLI)
+
+![CLI](screenshots/terminal.png)
+
+---
+
+## 🎨 Theme Customizer
+
+![Customizer](screenshots/customizer.png)
+
+---
+
+## 📊 GitHub Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 📂 Projects Section
+
+![Projects](screenshots/projects.png)
+
+---
+
+## 📱 Mobile Responsive Design
+
+| Home | Projects | Contact |
+|------|----------|----------|
+| ![](screenshots/mobile-home.png) | ![](screenshots/mobile-projects.png) | ![](screenshots/mobile-contact.png) |
+
+---
+
+🇺🇸 English/🇮🇳 Hindi
+## 🗣️ 🇺🇸 English/🇮🇳 Hindi
+
+![English](screenshots/english.png)
+![Hindi](screenshots/hindi.png)
+
+---
+
+# ✨ Features
+
+## 🎨 Premium UI
+
+- Modern Glassmorphism Design
+- Animated Gradient Background
+- Cursor Glow Effects
+- Scroll Progress Indicator
+- Floating Navigation
+- Fully Responsive Layout
+- Dark / Light Mode
+- Dynamic Accent Colors
+- Smooth Scroll Animations
+
+---
+
+## ⚡ Interactive Components
+
+- Interactive Project Cards
+- Resume Preview
+- Animated Statistics
+- GitHub Contribution Heatmap
+- Tech Stack Explorer
+- Timeline Navigation
+- Project Detail Modals
+
+---
+
+## 💻 Developer Experience
+
+- VS Code Style Command Palette
+- Interactive CLI Terminal
+- Matrix Rain Easter Egg
+- Keyboard Shortcuts
+- LocalStorage Preferences
+- Theme Persistence
+
+---
+
+## 🌍 Localization
+
+Supports
+
+- 🇺🇸 English
+- 🇮🇳 Hindi
+
+Entire interface translates including
+
+- Navbar
+- Hero
+- About
+- Projects
+- Contact
+- Statistics
+- Typing Animation
+- Buttons
+
+---
+
+# 🖥 Developer Console Commands
+
+| Command | Description |
+|----------|------------|
+| help | List all commands |
+| about | Portfolio information |
+| skills | Show tech stack |
+| projects | List featured projects |
+| contact | Contact information |
+| theme blue | Change theme |
+| theme green | Change theme |
+| theme orange | Change theme |
+| theme purple | Change theme |
+| konami | Matrix Mode |
+| clear | Clear terminal |
+| exit | Close terminal |
+
+---
+
+# ⌨ Keyboard Shortcuts
 
 | Shortcut | Action |
-| :--- | :--- |
-| `Ctrl + K` | Toggle Command Palette |
-| `Alt + T` | Toggle CLI Developer Console |
-| `R` | Toggle Resume Preview Modal |
-| `P` | Smooth Scroll to Projects |
-| `C` | Smooth Scroll to Contact Form |
-| `ESC` | Close active modals, menus, or command palettes |
+|-----------|---------|
+| Ctrl + K | Open Command Palette |
+| Alt + T | Open Developer Console |
+| R | Resume Preview |
+| P | Scroll to Projects |
+| C | Scroll to Contact |
+| ESC | Close Active Window |
 
 ---
 
-## 📁 File Structure
+# 🛠 Tech Stack
 
-All source files are stored inside the repository subdirectory:
-```
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript (ES6)
+
+### UI
+
+- Glassmorphism
+- CSS Animations
+- CSS Variables
+- HSL Color System
+
+### Storage
+
+- LocalStorage API
+
+### Graphics
+
+- HTML Canvas API
+- SVG
+- CSS Filters
+
+---
+
+# 📂 Project Structure
+
+```text
 TechNova_PortfolioWebsite/
-├── index.html        # Main semantic structural layout and modal shells
-├── styles.css        # Glassmorphic layout styles, HSL rules, and animations
-├── script.js         # Interactive canvas math, localization loops, CLI parser, and shortcuts
-├── profile.jpg       # Profile photo asset
-├── README.md         # This documentation file
+│
+├── index.html
+├── styles.css
+├── script.js
+├── profile.jpg
+├── screenshots/
+│   ├── home.png
+│   ├── projects.png
+│   ├── terminal.png
+│   ├── dashboard.png
+│   ├── customizer.png
+│   ├── mobile-home.png
+│   ├── mobile-projects.png
+│   └── mobile-contact.png
+│
+├── README.md
 └── DEPLOYMENT_GUIDE.md
 ```
 
 ---
 
-## 🚀 Quick Start (Local Setup)
+# 🚀 Installation
 
-1. Clone or download the repository.
-2. Navigate to the `TechNova_PortfolioWebsite` subdirectory:
-   ```bash
-   cd TechNova_PortfolioWebsite
-   ```
-3. Launch a local web server. For example, using Python:
-   ```bash
-   python -m http.server 5500
-   ```
-4. Open your browser and navigate to `http://localhost:5500`.
+```bash
+git clone https://github.com/bhumisingh200/Portfolio.git
+
+cd TechNova_PortfolioWebsite
+
+python -m http.server 5500
+```
+
+Visit
+
+```
+http://localhost:5500
+```
 
 ---
 
-## 🌎 Contact Info
-* **Name**: Bhumi Singh
-* **Email**: bhumi_2400526@gniot.net.in
-* **LinkedIn**: [bhumi-singh-97818830b](https://linkedin.com/in/bhumi-singh-97818830b)
-* **GitHub**: [bhumisingh200](https://github.com/bhumisingh200)
+# 🎯 Performance Highlights
+
+✔ Pure Vanilla JavaScript
+
+✔ No Frameworks
+
+✔ Lightweight
+
+✔ Fully Responsive
+
+✔ Optimized Animations
+
+✔ LocalStorage Support
+
+✔ Keyboard Accessible
+
+✔ Mobile Friendly
+
+---
+
+# 🚀 Future Improvements
+
+- AI Chat Assistant
+- Blog Section
+- Dynamic GitHub API Integration
+- Visitor Analytics Dashboard
+- Multi-theme Library
+- Particle Customizer
+- Project Search
+- Admin Dashboard
+- CMS Integration
+- PWA Support
+
+---
+
+# 🤝 Connect With Me
+
+### 👩‍💻 Bhumi Singh
+
+📧 bhumi_2400526@gniot.net.in
+
+💼 LinkedIn
+
+https://linkedin.com/in/bhumi-singh-97818830b
+
+💻 GitHub
+
+https://github.com/bhumisingh200
+
+---
+
+# ⭐ Support
+
+If you found this project helpful, consider giving it a ⭐ on GitHub.
+
+---
+
+<div align="center">
+
+### Made with ❤️ by Bhumi Singh
+
+</div>
